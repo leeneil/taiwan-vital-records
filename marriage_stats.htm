@@ -1,0 +1,1655 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" >
+<html>
+<head>
+<link rel="shortcut icon" href="http://gotac.myweb.hinet.net/gotac.ico" >
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<!-- 系統開發:金諄資訊股份有限公司 (02) 2759-6506 -->
+
+
+<title>結婚登記對數─按區域別分查詢結果網頁</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFCC;
+}
+body,td,th {
+	font-size: smaller;
+	color: #000066;
+}
+
+a:active {
+	text-decoration: none;
+}
+a:link {
+	color: #000066;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #330066;
+}
+a:hover {
+	text-decoration: underline;
+}
+ 
+th,.stycode {
+	background-color: #DFFFFF;
+	font-weight: lighter;
+	color: #000066;
+	}
+.stytitle {
+	font-weight: bold;
+	color: #000066;
+	background-color: #B9B9FF;
+}
+.stydata {
+	background-color: #FFFFEC;
+	color: #0000CC;
+	background-position: center center;
+}
+.styremark {
+	color:#660000;
+}
+.stytable {
+	background-color: #E6FFFF;
+	background-position: center center;
+}
+
+.headcls {
+	font-size: 16;
+	color: #000066;
+	font-weight: bold;
+}
+.msgcls {
+	color: #990033;
+}
+.desccls {
+	color: #000099;
+}
+ .timecls {
+	color:#660000;
+	font-size: 10;
+        text-align: right;
+}
+ .tblcls {
+     margin-left:15px;
+}
+.stymon {
+	background-color: #FFDFFF;
+}
+.styrate {
+	background-color: #FFFFCA;
+}
+ .printcls {
+	background-color: #FFD5BF;
+	border: thin outset #8C8CFF;
+	color: #009;
+	padding-top: 3px;
+	padding-right: 1px;
+	padding-bottom: 0px;
+	padding-left: 1px;
+	margin-bottom: 2px;
+}
+-->
+</style>
+
+<script language="JavaScript" src="stcom.js"></script>
+<script language="JavaScript">
+
+var seltype=1;       //check處理
+var outModeType=0;	//顯示圖表之型態
+var cyclekind2=1;	               //表示要顯示截至本月累計
+var goutKind=3;					//內政部特殊處理
+var preParseMk=1;
+var preParseHead="(全選)";
+var parseAllMark=0; 
+var gUrl="";
+var gUrl2="";
+var goutKind2=0; 
+var goutKind=getVal("1");
+function openLink(lkind){
+	if (lkind==1) {
+		location.href=gUrl;
+	} else {
+		location.href=gUrl2;
+	}
+ 
+}
+function initproc() {
+ 
+	/*
+    .OutMode.AddItem "1-(列)統計期  (行)統計項/複分類"
+    .OutMode.AddItem "2-(列)統計期/統計項 (行)複分類"
+    .OutMode.AddItem "3-(列)統計期/複分類 (行)統計項"
+    .OutMode.AddItem "4-(列)統計期  (行)複分類/統計項"
+    .OutMode.AddItem "5-(列)複分類  (行)統計期/統計項"
+    .OutMode.AddItem "6-(列)統計項/複分類  (行)統計期"
+    .OutMode.AddItem "11-(列)統計期 (行)統計項"
+    .OutMode.AddItem "12-(列)統計期 (行)複分類"
+    .OutMode.AddItem "13-(列)統計項 (行)複分類"
+    .OutMode.AddItem "14-(列)統計項 (行)統計期"
+    .OutMode.AddItem "15-(列)複分類 (行)統計項"
+	*/
+	
+ 
+	if (goutKind==1) {
+		goutKind2=6;
+	} else if (goutKind==6) {
+		goutKind2=1;
+	} else if (goutKind==2) {
+		goutKind2=3;
+	} else if (goutKind==3) {
+		goutKind2=2;
+	} else if (goutKind==4) {
+		goutKind2=5;
+	} else if (goutKind==5) {
+		goutKind2=4;
+		
+	} else if (goutKind==11) {
+		goutKind2=14;
+	} else if (goutKind==14) {
+		goutKind2=11;
+	} else if (goutKind==13) {
+		goutKind2=15;
+	} else if (goutKind==15) {
+		goutKind2=13;
+	} else {
+		goutKind2=goutKind;
+	}
+	
+		
+		
+	
+	gUrl=location.href;
+	gUrl2=location.href;
+	
+	gUrl=gUrl.replace(eval("/&outkind=1/g"),"&outkind="+goutKind2); 
+	gUrl2=gUrl2.replace(eval("/&outmode=0/g"),"&outmode=5"); 	 //下載Excel
+	
+
+
+}
+
+
+function openWindow(ltype,lsysid, lparm,ldframe,ldposx,ldposy,ldheight,ldwidth){
+}
+</script>
+
+</head>
+
+<body  onLoad="MM_preloadImages('prvbtn.gif','prvbtn_f2.gif');initproc();" tracingsrc="imageback1.gif" tracingopacity="10" >
+<form   name="form1">
+
+<table summary='查詢結果網頁表格資料'  width="100%" height="55" border="0">
+  <tr align="center" valign="middle"  >
+
+<td width=20% align=left>單位：對</td>          
+<td width="60%" class="headcls" colspan=6 >結婚對數 </td>          
+<td nowrap>表格數：1</td>          
+<td><input name="chgout" type="button" value="轉置" class=printcls onClick="javascript:window.openLink(1);"    title="對調結果表之表頭及表側"></td>          
+<td><input name="print" type="button" value="列印" class=printcls onClick="javascript:window.print();"></td>          
+<td><input name="downxls" type="button" value="下載Excel" class=printcls onClick="javascript:window.openLink(2);" ></td>          
+  </tr>
+  <tr><td height="15" colspan=11 background="imageline2.gif">&nbsp;</td>          
+  </tr>
+</table>
+
+ <table summary='統計資料庫查詢結果網頁表格資料'  border="1" cellpadding="1" cellspacing="1" class="tblcls">
+
+    <tr><th width="80"  align="center" valign="middle" scope="col" class="stytitle">　　　　</th>
+
+ <th  width="96"  align="center" scope="col" class="stytitle">結婚對數</th>       
+    </tr>
+
+    <tr><th width="80"  align="center" valign="middle" scope="col" class="stytitle">&nbsp;&nbsp;　　　　</th>
+
+ <th  width="96"  align="center" scope="col" class="stytitle">區域別總計</th>       
+    </tr>
+
+
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 1月</th>
+  <td class="stydata" align="right"   nowrap > 19,274 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 2月</th>
+  <td class="stydata" align="right"   nowrap > 19,117 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 3月</th>
+  <td class="stydata" align="right"   nowrap > 15,132 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 4月</th>
+  <td class="stydata" align="right"   nowrap > 14,249 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 5月</th>
+  <td class="stydata" align="right"   nowrap > 16,350 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,102 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 7月</th>
+  <td class="stydata" align="right"   nowrap > 12,050 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 8月</th>
+  <td class="stydata" align="right"   nowrap > 7,278 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 9月</th>
+  <td class="stydata" align="right"   nowrap > 7,278 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 10月</th>
+  <td class="stydata" align="right"   nowrap > 12,684 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 11月</th>
+  <td class="stydata" align="right"   nowrap > 14,931 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>83年 12月</th>
+  <td class="stydata" align="right"   nowrap > 20,419 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 1月</th>
+  <td class="stydata" align="right"   nowrap > 19,168 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 2月</th>
+  <td class="stydata" align="right"   nowrap > 15,007 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 3月</th>
+  <td class="stydata" align="right"   nowrap > 16,817 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 4月</th>
+  <td class="stydata" align="right"   nowrap > 13,811 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 5月</th>
+  <td class="stydata" align="right"   nowrap > 15,473 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 6月</th>
+  <td class="stydata" align="right"   nowrap > 13,262 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 7月</th>
+  <td class="stydata" align="right"   nowrap > 10,403 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 8月</th>
+  <td class="stydata" align="right"   nowrap > 5,539 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 9月</th>
+  <td class="stydata" align="right"   nowrap > 11,162 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 10月</th>
+  <td class="stydata" align="right"   nowrap > 9,552 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 11月</th>
+  <td class="stydata" align="right"   nowrap > 11,982 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>84年 12月</th>
+  <td class="stydata" align="right"   nowrap > 18,073 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 1月</th>
+  <td class="stydata" align="right"   nowrap > 20,885 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 2月</th>
+  <td class="stydata" align="right"   nowrap > 15,296 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 3月</th>
+  <td class="stydata" align="right"   nowrap > 12,963 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 4月</th>
+  <td class="stydata" align="right"   nowrap > 16,661 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 5月</th>
+  <td class="stydata" align="right"   nowrap > 15,573 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,834 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 7月</th>
+  <td class="stydata" align="right"   nowrap > 12,078 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 8月</th>
+  <td class="stydata" align="right"   nowrap > 9,134 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 9月</th>
+  <td class="stydata" align="right"   nowrap > 6,463 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 10月</th>
+  <td class="stydata" align="right"   nowrap > 13,477 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 11月</th>
+  <td class="stydata" align="right"   nowrap > 15,336 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>85年 12月</th>
+  <td class="stydata" align="right"   nowrap > 18,724 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 1月</th>
+  <td class="stydata" align="right"   nowrap > 19,556 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 2月</th>
+  <td class="stydata" align="right"   nowrap > 14,569 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 3月</th>
+  <td class="stydata" align="right"   nowrap > 14,857 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 4月</th>
+  <td class="stydata" align="right"   nowrap > 14,557 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 5月</th>
+  <td class="stydata" align="right"   nowrap > 13,530 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,326 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 7月</th>
+  <td class="stydata" align="right"   nowrap > 12,059 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 8月</th>
+  <td class="stydata" align="right"   nowrap > 6,398 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 9月</th>
+  <td class="stydata" align="right"   nowrap > 10,644 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,848 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 11月</th>
+  <td class="stydata" align="right"   nowrap > 13,576 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>86年 12月</th>
+  <td class="stydata" align="right"   nowrap > 19,296 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 1月</th>
+  <td class="stydata" align="right"   nowrap > 17,877 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 2月</th>
+  <td class="stydata" align="right"   nowrap > 17,604 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 3月</th>
+  <td class="stydata" align="right"   nowrap > 14,087 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 4月</th>
+  <td class="stydata" align="right"   nowrap > 12,769 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 5月</th>
+  <td class="stydata" align="right"   nowrap > 11,034 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,862 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 7月</th>
+  <td class="stydata" align="right"   nowrap > 9,079 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 8月</th>
+  <td class="stydata" align="right"   nowrap > 8,380 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 9月</th>
+  <td class="stydata" align="right"   nowrap > 5,451 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 10月</th>
+  <td class="stydata" align="right"   nowrap > 12,028 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 11月</th>
+  <td class="stydata" align="right"   nowrap > 9,075 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>87年 12月</th>
+  <td class="stydata" align="right"   nowrap > 15,730 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 1月</th>
+  <td class="stydata" align="right"   nowrap > 17,972 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 2月</th>
+  <td class="stydata" align="right"   nowrap > 14,291 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 3月</th>
+  <td class="stydata" align="right"   nowrap > 14,614 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 4月</th>
+  <td class="stydata" align="right"   nowrap > 15,429 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 5月</th>
+  <td class="stydata" align="right"   nowrap > 14,111 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 6月</th>
+  <td class="stydata" align="right"   nowrap > 13,695 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 7月</th>
+  <td class="stydata" align="right"   nowrap > 13,313 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 8月</th>
+  <td class="stydata" align="right"   nowrap > 9,555 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 9月</th>
+  <td class="stydata" align="right"   nowrap > 8,232 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,642 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 11月</th>
+  <td class="stydata" align="right"   nowrap > 15,834 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>88年 12月</th>
+  <td class="stydata" align="right"   nowrap > 21,521 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 1月</th>
+  <td class="stydata" align="right"   nowrap > 20,575 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 2月</th>
+  <td class="stydata" align="right"   nowrap > 14,656 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 3月</th>
+  <td class="stydata" align="right"   nowrap > 14,489 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 4月</th>
+  <td class="stydata" align="right"   nowrap > 15,993 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 5月</th>
+  <td class="stydata" align="right"   nowrap > 15,858 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 6月</th>
+  <td class="stydata" align="right"   nowrap > 15,474 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 7月</th>
+  <td class="stydata" align="right"   nowrap > 13,321 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 8月</th>
+  <td class="stydata" align="right"   nowrap > 8,271 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 9月</th>
+  <td class="stydata" align="right"   nowrap > 12,149 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,088 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 11月</th>
+  <td class="stydata" align="right"   nowrap > 18,348 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>89年 12月</th>
+  <td class="stydata" align="right"   nowrap > 18,420 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 1月</th>
+  <td class="stydata" align="right"   nowrap > 19,320 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 2月</th>
+  <td class="stydata" align="right"   nowrap > 13,623 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 3月</th>
+  <td class="stydata" align="right"   nowrap > 15,441 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 4月</th>
+  <td class="stydata" align="right"   nowrap > 14,110 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 5月</th>
+  <td class="stydata" align="right"   nowrap > 14,075 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 6月</th>
+  <td class="stydata" align="right"   nowrap > 11,762 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 7月</th>
+  <td class="stydata" align="right"   nowrap > 14,018 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 8月</th>
+  <td class="stydata" align="right"   nowrap > 11,310 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 9月</th>
+  <td class="stydata" align="right"   nowrap > 6,363 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,588 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 11月</th>
+  <td class="stydata" align="right"   nowrap > 16,171 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>90年 12月</th>
+  <td class="stydata" align="right"   nowrap > 19,734 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 1月</th>
+  <td class="stydata" align="right"   nowrap > 17,678 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 2月</th>
+  <td class="stydata" align="right"   nowrap > 13,013 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,575 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 4月</th>
+  <td class="stydata" align="right"   nowrap > 13,716 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 5月</th>
+  <td class="stydata" align="right"   nowrap > 13,996 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 6月</th>
+  <td class="stydata" align="right"   nowrap > 13,722 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 7月</th>
+  <td class="stydata" align="right"   nowrap > 14,554 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 8月</th>
+  <td class="stydata" align="right"   nowrap > 10,315 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 9月</th>
+  <td class="stydata" align="right"   nowrap > 8,823 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,179 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 11月</th>
+  <td class="stydata" align="right"   nowrap > 15,858 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>91年 12月</th>
+  <td class="stydata" align="right"   nowrap > 23,226 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 1月</th>
+  <td class="stydata" align="right"   nowrap > 19,285 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 2月</th>
+  <td class="stydata" align="right"   nowrap > 11,791 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,346 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 4月</th>
+  <td class="stydata" align="right"   nowrap > 15,297 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 5月</th>
+  <td class="stydata" align="right"   nowrap > 14,285 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 6月</th>
+  <td class="stydata" align="right"   nowrap > 10,958 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 7月</th>
+  <td class="stydata" align="right"   nowrap > 11,773 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 8月</th>
+  <td class="stydata" align="right"   nowrap > 7,712 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 9月</th>
+  <td class="stydata" align="right"   nowrap > 13,179 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 10月</th>
+  <td class="stydata" align="right"   nowrap > 16,322 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 11月</th>
+  <td class="stydata" align="right"   nowrap > 15,617 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>92年 12月</th>
+  <td class="stydata" align="right"   nowrap > 21,918 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 1月</th>
+  <td class="stydata" align="right"   nowrap > 22,225 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 2月</th>
+  <td class="stydata" align="right"   nowrap > 13,911 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 3月</th>
+  <td class="stydata" align="right"   nowrap > 10,280 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 4月</th>
+  <td class="stydata" align="right"   nowrap > 6,958 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 5月</th>
+  <td class="stydata" align="right"   nowrap > 9,985 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 6月</th>
+  <td class="stydata" align="right"   nowrap > 8,975 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 7月</th>
+  <td class="stydata" align="right"   nowrap > 9,549 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 8月</th>
+  <td class="stydata" align="right"   nowrap > 7,511 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 9月</th>
+  <td class="stydata" align="right"   nowrap > 6,024 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 10月</th>
+  <td class="stydata" align="right"   nowrap > 10,212 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 11月</th>
+  <td class="stydata" align="right"   nowrap > 12,303 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>93年 12月</th>
+  <td class="stydata" align="right"   nowrap > 13,520 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 1月</th>
+  <td class="stydata" align="right"   nowrap > 14,923 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 2月</th>
+  <td class="stydata" align="right"   nowrap > 10,377 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,920 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 4月</th>
+  <td class="stydata" align="right"   nowrap > 10,830 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 5月</th>
+  <td class="stydata" align="right"   nowrap > 12,039 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 6月</th>
+  <td class="stydata" align="right"   nowrap > 10,223 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 7月</th>
+  <td class="stydata" align="right"   nowrap > 10,817 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 8月</th>
+  <td class="stydata" align="right"   nowrap > 7,276 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 9月</th>
+  <td class="stydata" align="right"   nowrap > 8,185 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 10月</th>
+  <td class="stydata" align="right"   nowrap > 12,225 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 11月</th>
+  <td class="stydata" align="right"   nowrap > 14,157 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>94年 12月</th>
+  <td class="stydata" align="right"   nowrap > 16,168 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 1月</th>
+  <td class="stydata" align="right"   nowrap > 16,442 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 2月</th>
+  <td class="stydata" align="right"   nowrap > 11,809 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 3月</th>
+  <td class="stydata" align="right"   nowrap > 12,407 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 4月</th>
+  <td class="stydata" align="right"   nowrap > 11,333 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 5月</th>
+  <td class="stydata" align="right"   nowrap > 11,930 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,040 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 7月</th>
+  <td class="stydata" align="right"   nowrap > 11,322 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 8月</th>
+  <td class="stydata" align="right"   nowrap > 6,124 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 9月</th>
+  <td class="stydata" align="right"   nowrap > 4,986 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 10月</th>
+  <td class="stydata" align="right"   nowrap > 11,477 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 11月</th>
+  <td class="stydata" align="right"   nowrap > 13,881 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>95年 12月</th>
+  <td class="stydata" align="right"   nowrap > 18,918 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 1月</th>
+  <td class="stydata" align="right"   nowrap > 15,256 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 2月</th>
+  <td class="stydata" align="right"   nowrap > 10,986 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 3月</th>
+  <td class="stydata" align="right"   nowrap > 10,932 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 4月</th>
+  <td class="stydata" align="right"   nowrap > 11,288 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 5月</th>
+  <td class="stydata" align="right"   nowrap > 14,358 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 6月</th>
+  <td class="stydata" align="right"   nowrap > 11,219 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 7月</th>
+  <td class="stydata" align="right"   nowrap > 11,136 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 8月</th>
+  <td class="stydata" align="right"   nowrap > 7,391 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 9月</th>
+  <td class="stydata" align="right"   nowrap > 6,059 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 10月</th>
+  <td class="stydata" align="right"   nowrap > 12,302 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 11月</th>
+  <td class="stydata" align="right"   nowrap > 11,713 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>96年 12月</th>
+  <td class="stydata" align="right"   nowrap > 12,401 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 1月</th>
+  <td class="stydata" align="right"   nowrap > 17,979 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 2月</th>
+  <td class="stydata" align="right"   nowrap > 12,249 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 3月</th>
+  <td class="stydata" align="right"   nowrap > 10,232 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 4月</th>
+  <td class="stydata" align="right"   nowrap > 10,056 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 5月</th>
+  <td class="stydata" align="right"   nowrap > 16,189 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,417 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 7月</th>
+  <td class="stydata" align="right"   nowrap > 9,270 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 8月</th>
+  <td class="stydata" align="right"   nowrap > 3,999 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 9月</th>
+  <td class="stydata" align="right"   nowrap > 9,899 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,198 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 11月</th>
+  <td class="stydata" align="right"   nowrap > 16,330 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>97年 12月</th>
+  <td class="stydata" align="right"   nowrap > 22,048 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 1月</th>
+  <td class="stydata" align="right"   nowrap > 15,166 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 2月</th>
+  <td class="stydata" align="right"   nowrap > 9,137 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 3月</th>
+  <td class="stydata" align="right"   nowrap > 11,634 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 4月</th>
+  <td class="stydata" align="right"   nowrap > 8,597 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 5月</th>
+  <td class="stydata" align="right"   nowrap > 9,132 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 6月</th>
+  <td class="stydata" align="right"   nowrap > 8,255 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 7月</th>
+  <td class="stydata" align="right"   nowrap > 6,771 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 8月</th>
+  <td class="stydata" align="right"   nowrap > 6,614 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 9月</th>
+  <td class="stydata" align="right"   nowrap > 6,338 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 10月</th>
+  <td class="stydata" align="right"   nowrap > 11,321 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 11月</th>
+  <td class="stydata" align="right"   nowrap > 10,188 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>98年 12月</th>
+  <td class="stydata" align="right"   nowrap > 13,946 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 1月</th>
+  <td class="stydata" align="right"   nowrap > 14,345 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 2月</th>
+  <td class="stydata" align="right"   nowrap > 9,034 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 3月</th>
+  <td class="stydata" align="right"   nowrap > 11,425 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 4月</th>
+  <td class="stydata" align="right"   nowrap > 12,217 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 5月</th>
+  <td class="stydata" align="right"   nowrap > 12,501 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 6月</th>
+  <td class="stydata" align="right"   nowrap > 9,224 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 7月</th>
+  <td class="stydata" align="right"   nowrap > 9,177 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 8月</th>
+  <td class="stydata" align="right"   nowrap > 5,447 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 9月</th>
+  <td class="stydata" align="right"   nowrap > 15,843 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 10月</th>
+  <td class="stydata" align="right"   nowrap > 12,807 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 11月</th>
+  <td class="stydata" align="right"   nowrap > 10,320 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>99年 12月</th>
+  <td class="stydata" align="right"   nowrap > 16,479 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 1月</th>
+  <td class="stydata" align="right"   nowrap > 18,015 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 2月</th>
+  <td class="stydata" align="right"   nowrap > 8,934 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 3月</th>
+  <td class="stydata" align="right"   nowrap > 11,977 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 4月</th>
+  <td class="stydata" align="right"   nowrap > 9,780 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 5月</th>
+  <td class="stydata" align="right"   nowrap > 14,697 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 6月</th>
+  <td class="stydata" align="right"   nowrap > 13,387 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 7月</th>
+  <td class="stydata" align="right"   nowrap > 11,022 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 8月</th>
+  <td class="stydata" align="right"   nowrap > 5,179 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 9月</th>
+  <td class="stydata" align="right"   nowrap > 13,075 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 10月</th>
+  <td class="stydata" align="right"   nowrap > 22,064 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 11月</th>
+  <td class="stydata" align="right"   nowrap > 18,286 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>100年 12月</th>
+  <td class="stydata" align="right"   nowrap > 18,911 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 1月</th>
+  <td class="stydata" align="right"   nowrap > 14,442 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 2月</th>
+  <td class="stydata" align="right"   nowrap > 9,855 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 3月</th>
+  <td class="stydata" align="right"   nowrap > 15,151 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 4月</th>
+  <td class="stydata" align="right"   nowrap > 10,110 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 5月</th>
+  <td class="stydata" align="right"   nowrap > 10,630 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 6月</th>
+  <td class="stydata" align="right"   nowrap > 10,543 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 7月</th>
+  <td class="stydata" align="right"   nowrap > 12,306 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 8月</th>
+  <td class="stydata" align="right"   nowrap > 8,045 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 9月</th>
+  <td class="stydata" align="right"   nowrap > 7,924 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 10月</th>
+  <td class="stydata" align="right"   nowrap > 13,797 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 11月</th>
+  <td class="stydata" align="right"   nowrap > 15,280 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>101年 12月</th>
+  <td class="stydata" align="right"   nowrap > 15,301 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 1月</th>
+  <td class="stydata" align="right"   nowrap > 17,258 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 2月</th>
+  <td class="stydata" align="right"   nowrap > 7,774 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,562 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 4月</th>
+  <td class="stydata" align="right"   nowrap > 10,335 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 5月</th>
+  <td class="stydata" align="right"   nowrap > 16,023 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 6月</th>
+  <td class="stydata" align="right"   nowrap > 8,776 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 7月</th>
+  <td class="stydata" align="right"   nowrap > 11,263 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 8月</th>
+  <td class="stydata" align="right"   nowrap > 5,815 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 9月</th>
+  <td class="stydata" align="right"   nowrap > 12,758 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 10月</th>
+  <td class="stydata" align="right"   nowrap > 13,222 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 11月</th>
+  <td class="stydata" align="right"   nowrap > 15,378 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>102年 12月</th>
+  <td class="stydata" align="right"   nowrap > 15,472 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 1月</th>
+  <td class="stydata" align="right"   nowrap > 16,455 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 2月</th>
+  <td class="stydata" align="right"   nowrap > 9,616 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,000 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 4月</th>
+  <td class="stydata" align="right"   nowrap > 9,707 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 5月</th>
+  <td class="stydata" align="right"   nowrap > 18,308 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 6月</th>
+  <td class="stydata" align="right"   nowrap > 12,345 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 7月</th>
+  <td class="stydata" align="right"   nowrap > 9,975 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 8月</th>
+  <td class="stydata" align="right"   nowrap > 5,819 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 9月</th>
+  <td class="stydata" align="right"   nowrap > 13,837 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 10月</th>
+  <td class="stydata" align="right"   nowrap > 12,828 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 11月</th>
+  <td class="stydata" align="right"   nowrap > 10,580 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>103年 12月</th>
+  <td class="stydata" align="right"   nowrap > 16,817 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 1月</th>
+  <td class="stydata" align="right"   nowrap > 16,146 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 2月</th>
+  <td class="stydata" align="right"   nowrap > 10,812 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,395 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 4月</th>
+  <td class="stydata" align="right"   nowrap > 9,763 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 5月</th>
+  <td class="stydata" align="right"   nowrap > 18,379 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 6月</th>
+  <td class="stydata" align="right"   nowrap > 10,714 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 7月</th>
+  <td class="stydata" align="right"   nowrap > 11,552 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 8月</th>
+  <td class="stydata" align="right"   nowrap > 7,239 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 9月</th>
+  <td class="stydata" align="right"   nowrap > 8,333 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 10月</th>
+  <td class="stydata" align="right"   nowrap > 16,948 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 11月</th>
+  <td class="stydata" align="right"   nowrap > 14,388 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>104年 12月</th>
+  <td class="stydata" align="right"   nowrap > 16,677 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 1月</th>
+  <td class="stydata" align="right"   nowrap > 16,588 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 2月</th>
+  <td class="stydata" align="right"   nowrap > 9,677 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 3月</th>
+  <td class="stydata" align="right"   nowrap > 13,181 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 4月</th>
+  <td class="stydata" align="right"   nowrap > 9,135 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 5月</th>
+  <td class="stydata" align="right"   nowrap > 15,456 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 6月</th>
+  <td class="stydata" align="right"   nowrap > 10,765 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 7月</th>
+  <td class="stydata" align="right"   nowrap > 10,517 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 8月</th>
+  <td class="stydata" align="right"   nowrap > 5,671 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 9月</th>
+  <td class="stydata" align="right"   nowrap > 12,186 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 10月</th>
+  <td class="stydata" align="right"   nowrap > 14,778 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 11月</th>
+  <td class="stydata" align="right"   nowrap > 13,348 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>105年 12月</th>
+  <td class="stydata" align="right"   nowrap > 16,559 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 1月</th>
+  <td class="stydata" align="right"   nowrap > 14,368 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 2月</th>
+  <td class="stydata" align="right"   nowrap > 9,656 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 3月</th>
+  <td class="stydata" align="right"   nowrap > 12,432 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 4月</th>
+  <td class="stydata" align="right"   nowrap > 9,865 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 5月</th>
+  <td class="stydata" align="right"   nowrap > 15,072 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 6月</th>
+  <td class="stydata" align="right"   nowrap > 10,561 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 7月</th>
+  <td class="stydata" align="right"   nowrap > 8,920 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 8月</th>
+  <td class="stydata" align="right"   nowrap > 8,084 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 9月</th>
+  <td class="stydata" align="right"   nowrap > 7,844 </td>          
+   </tr>
+   
+   <tr onmouseover=sbarb(this) onmouseout=cbarb(this)>
+   <th class="stycode"   align="left" scope="row" nowrap>106年 10月</th>
+  <td class="stydata" align="right"   nowrap > 13,236 </td>          
+   </tr>
+   
+ </table>
+
+ <div class="timecls">產生時間:106/11/27 10:46:40</div>  
+ <desc><span class="desccls"></span></desc><br> 
+ <desc><span class="msgcls"></span></desc><br> 
+ <desc><span class="desccls"></span></desc><br> 
+ <desc><span class="desccls"></span></desc><br> 
+  <desc><span class="msgcls">＊表中數字顏色若為暗紫色者，將游標移至該處，可出現註解說明。</span></desc><br>   
+<nolinkdata>  
+</form>  
+</body>  
+</html>  
+
+ 
+
